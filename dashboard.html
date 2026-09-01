@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elite Spinny - Dashboard Overview</title>
+  <link rel="stylesheet" href="admin.css">
+  <style>
+    /* Dashboard Specific Styles */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .metric-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      padding: 1.25rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 140px;
+    }
+
+    .metric-card.highlight {
+      background-color: var(--accent-peach);
+      border-color: transparent;
+    }
+
+    .metric-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    .metric-value {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      margin: 0.35rem 0;
+    }
+
+    .metric-footer {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .trend-up { color: #2F7D4E; font-weight: 500; }
+    .trend-alert { color: #B33A2B; font-weight: 500; }
+
+    .dashboard-panels {
+      display: grid;
+      grid-template-columns: 2fr 1.1fr;
+      gap: 2rem;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1.2rem;
+    }
+
+    .view-all {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .approval-list { display: flex; flex-direction: column; gap: 1rem; }
+    
+    .approval-card {
+      display: flex;
+      border: 1px solid var(--border-color);
+      padding: 1rem;
+      gap: 1.2rem;
+    }
+
+    .approval-img { width: 140px; height: 95px; object-fit: cover; background: #EAE6E1; }
+    
+    .approval-content { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    
+    .approval-title-row { display: flex; justify-content: space-between; align-items: flex-start; }
+    .approval-title-row h4 { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 500; line-height: 1.2; max-width: 180px;}
+    
+    .approval-meta { font-size: 0.62rem; color: var(--text-muted); display: flex; gap: 1rem; }
+    .approval-submitter { font-size: 0.68rem; color: var(--text-muted); margin-top: 0.25rem; }
+
+    .approval-actions {
+      border-left: 1px solid var(--border-color);
+      padding-left: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.5rem;
+      min-width: 90px;
+    }
+    
+    .approval-actions .btn { padding: 0.5rem 0.8rem; font-size: 0.62rem; }
+
+    .status-panel {
+      border: 1px solid var(--border-color);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    .status-item { position: relative; padding-left: 1.2rem; }
+    .status-dot { position: absolute; left: 0; top: 0.25rem; width: 6px; height: 6px; border-radius: 50%; }
+    .dot-green { background: #34A853; }
+    .dot-gray { background: var(--brand-brown); }
+    .dot-red { background: #EA4335; }
+
+    .status-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em; margin-bottom: 0.35rem; }
+    .status-desc { font-size: 0.72rem; color: var(--text-muted); line-height: 1.4; }
+  </style>
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="sidebar">
+      <div class="brand-header">Elite Spinny</div>
+      <nav class="sidebar-nav">
+        <span class="nav-group-label">DASHBOARD</span>
+        <a href="#" class="nav-item active">Overview</a>
+        <a href="inventory.html" class="nav-item">Inventory</a>
+        <span class="nav-group-label" style="margin-top: 1.5rem;">SETTINGS</span>
+        <a href="profile.html" class="nav-item">Profile</a>
+        <a href="#" class="nav-item">Preferences</a>
+      </nav>
+      <div class="user-profile">
+        <div class="user-avatar"></div>
+        <div class="user-info">
+          <span class="user-name">Admin User</span>
+          <span class="user-role">System Administrator</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="page-header">
+        <div class="page-title">
+          <h1>Dashboard Overview</h1>
+          <p>Welcome back. Here is the status of the Elite Spinny marketplace.</p>
+        </div>
+        <div style="display: flex; gap: 0.75rem;">
+          <button class="btn btn-secondary">GENERATE<br>REPORT</button>
+          <button class="btn btn-primary" onclick="window.location.href='create-listing.html'">NEW<br>LISTING</button>
+        </div>
+      </header>
+
+      <h2 class="section-title">Key Insights</h2>
+      <section class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-header"><span>TOTAL SALES (MTD)</span></div>
+          <div class="metric-value">$4.2M</div>
+          <div class="metric-footer"><span class="trend-up">↗ +12.5%</span><span>vs last month</span></div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-header"><span>ACTIVE LISTINGS</span></div>
+          <div class="metric-value">142</div>
+          <div class="metric-footer"><span>— 0.0%</span><span>vs last month</span></div>
+        </div>
+        <div class="metric-card highlight">
+          <div class="metric-header"><span>PENDING REQUESTS</span></div>
+          <div class="metric-value">12</div>
+          <div class="metric-footer"><span class="trend-alert">⚠ Action Required</span><span>in approval queue</span></div>
+        </div>
+      </section>
+
+      <section class="dashboard-panels">
+        <div>
+          <div class="panel-header">
+            <h2 class="section-title" style="margin:0;">Pending Approvals</h2>
+            <a href="#" class="view-all">VIEW ALL</a>
+          </div>
+          <div class="approval-list">
+            <div class="approval-card">
+              <div class="approval-img"></div>
+              <div class="approval-content">
+                <div>
+                  <div class="approval-title-row">
+                    <h4>2023 Porsche 911 Carrera S</h4>
+                    <span class="badge">HIGH<br>PRIORITY</span>
+                  </div>
+                  <p class="approval-submitter">Submitted by: John Doe</p>
+                </div>
+                <div class="approval-meta">
+                  <span>◎ 4,200 MI</span>
+                  <span>◎ LOS ANGELES, CA</span>
+                </div>
+              </div>
+              <div class="approval-actions">
+                <button class="btn btn-primary">APPROVE</button>
+                <button class="btn btn-secondary">REJECT</button>
+              </div>
+            </div>
+            
+            <div class="approval-card">
+              <div class="approval-img"></div>
+              <div class="approval-content">
+                <div>
+                  <div class="approval-title-row">
+                    <h4>2022 Range Rover Autobiography</h4>
+                  </div>
+                  <p class="approval-submitter">Submitted by: Jane Smith</p>
+                </div>
+                <div class="approval-meta">
+                  <span>◎ 12,500 MI</span>
+                  <span>◎ MIAMI, FL</span>
+                </div>
+              </div>
+              <div class="approval-actions">
+                <button class="btn btn-primary">APPROVE</button>
+                <button class="btn btn-secondary">REJECT</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="section-title">Publishing Status</h2>
+          <div class="status-panel">
+            <div class="status-item">
+              <div class="status-dot dot-green"></div>
+              <div class="status-label">LIVE INVENTORY</div>
+              <div class="status-desc">Sync completed 5 mins ago. All systems operational.</div>
+            </div>
+            <div class="status-item">
+              <div class="status-dot dot-gray"></div>
+              <div class="status-label">IMAGE PROCESSING</div>
+              <div class="status-desc">3 batches currently in queue for watermark and compression.</div>
+            </div>
+            <div class="status-item">
+              <div class="status-dot dot-red"></div>
+              <div class="status-label">3RD PARTY SYNDICATION</div>
+              <div class="status-desc">Connection issue with Cars.com API. Retrying in 2 minutes.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

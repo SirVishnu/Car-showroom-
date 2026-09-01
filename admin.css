@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  /* Color Palette */
+  --bg-main: #FAF8F5;
+  --bg-surface: #FAF8F5;
+  --text-main: #2D221E;
+  --text-muted: #6E635C;
+  --brand-brown: #584334;
+  --brand-brown-hover: #453326;
+  --accent-peach: #F8DFC8;
+  --border-color: #E2DDD7;
+  
+  /* Typography */
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  display: flex;
+  min-height: 100vh;
+}
+
+/* --- Layout & Sidebar --- */
+.admin-layout {
+  display: flex;
+  width: 100%;
+}
+
+.sidebar {
+  width: 240px;
+  background-color: var(--bg-main);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  min-height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.brand-header {
+  padding: 2rem 1.5rem 1.5rem;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-color);
+}
+.brand-header span {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 0.2rem;
+}
+
+.sidebar-nav {
+  padding: 1.5rem 0.75rem;
+  flex-grow: 1;
+}
+
+.nav-group-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #8C827A;
+  margin: 0 0.75rem 0.75rem;
+  display: block;
+  text-transform: uppercase;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 0.65rem 0.75rem;
+  text-decoration: none;
+  color: var(--text-main);
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: 4px;
+  margin-bottom: 0.25rem;
+  transition: background 0.2s;
+  gap: 0.75rem;
+}
+
+.nav-item:hover {
+  background-color: rgba(0,0,0,0.03);
+}
+
+.nav-item.active {
+  background-color: var(--accent-peach);
+  color: var(--text-main);
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.2rem 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--border-color);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.user-role {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+/* --- Main Content --- */
+.main-content {
+  flex-grow: 1;
+  padding: 3rem 4rem;
+  max-width: 1200px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 2.5rem;
+}
+
+.page-title h1 {
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+.page-title p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 400;
+  margin-bottom: 1.25rem;
+}
+
+/* --- Cards & Forms --- */
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+}
+
+.card-header {
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.card-header h3 {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.form-group { margin-bottom: 1.25rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.form-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--border-color);
+  background-color: #FFF;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-main);
+  transition: border-color 0.2s;
+}
+
+.form-control:focus { outline: none; border-color: var(--brand-brown); }
+.form-control:disabled, .form-control[readonly] { background-color: rgba(0,0,0,0.02); color: var(--text-muted); }
+
+/* --- Buttons --- */
+.btn {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 0.75rem 1.4rem;
+  cursor: pointer;
+  text-align: center;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary {
+  background: var(--brand-brown);
+  border-color: var(--brand-brown);
+  color: var(--bg-main);
+}
+
+.btn-primary:hover {
+  background: var(--brand-brown-hover);
+}
+
+.btn-secondary {
+  background: var(--bg-main);
+  border-color: #D5CEC7;
+  color: var(--text-main);
+}
+
+.btn-secondary:hover {
+  background: rgba(0,0,0,0.03);
+}
+
+/* Utilities */
+.badge {
+  background-color: var(--accent-peach);
+  color: var(--brand-brown);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}

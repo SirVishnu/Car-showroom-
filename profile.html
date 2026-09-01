@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Profile - Elite Spinny</title>
+  <link rel="stylesheet" href="admin.css">
+  <style>
+    /* Profile Specific Styles */
+    .profile-grid { display: grid; grid-template-columns: 320px 1fr; gap: 2rem; align-items: start; }
+    
+    .user-card { text-align: center; }
+    .user-avatar-lg {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1rem;
+      background: var(--border-color);
+    }
+    
+    .user-card h2 { font-family: var(--font-heading); font-size: 1.6rem; margin-bottom: 0.25rem; font-weight: 500; }
+    .user-card p { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 1.25rem; }
+    
+    .badges { display: flex; justify-content: center; gap: 0.5rem; }
+    .badge-outline {
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 0.65rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      background: #FFF;
+    }
+
+    .status-list { list-style: none; margin-top: 1rem; }
+    .status-item {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 0.75rem;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.8rem;
+    }
+    .status-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    
+    .status-label { color: var(--text-muted); }
+    .status-active { color: #2F7D4E; font-weight: 500; display: flex; align-items: center; gap: 0.3rem; }
+    .status-dot { width: 6px; height: 6px; background-color: #2F7D4E; border-radius: 50%; }
+
+    .card-footer { display: flex; justify-content: flex-end; margin-top: 1.5rem; }
+    
+    .tfa-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 0;
+      border-top: 1px solid var(--border-color);
+      margin-top: 1.5rem;
+    }
+    .tfa-text h4 { font-family: var(--font-body); font-size: 0.85rem; margin-bottom: 0.25rem; }
+    .tfa-text p { font-size: 0.75rem; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="sidebar">
+      <div class="brand-header">Elite Spinny</div>
+      <nav class="sidebar-nav">
+        <span class="nav-group-label">DASHBOARD</span>
+        <a href="dashboard.html" class="nav-item">Overview</a>
+        <a href="inventory.html" class="nav-item">Inventory</a>
+        <span class="nav-group-label" style="margin-top: 1.5rem;">SETTINGS</span>
+        <a href="#" class="nav-item active">Profile</a>
+        <a href="#" class="nav-item">Preferences</a>
+      </nav>
+      <div class="user-profile">
+        <div class="user-avatar"></div>
+        <div class="user-info">
+          <span class="user-name">Admin User</span>
+          <span class="user-role">System Administrator</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="page-header">
+        <div class="page-title">
+          <h1>Admin Profile</h1>
+          <p>Manage your personal information and security settings.</p>
+        </div>
+      </header>
+
+      <div class="profile-grid">
+        <div style="display: flex; flex-direction: column; gap: 2rem;">
+          <div class="card user-card">
+            <div class="user-avatar-lg"></div>
+            <h2>Jane Doe</h2>
+            <p>System Administrator</p>
+            <div class="badges">
+              <span class="badge-outline">Super Admin</span>
+              <span class="badge-outline">Operations</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 style="font-size: 0.7rem; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase;">Account Status</h3>
+            <ul class="status-list">
+              <li class="status-item">
+                <span class="status-label">Status</span>
+                <span class="status-active"><div class="status-dot"></div> Active</span>
+              </li>
+              <li class="status-item">
+                <span class="status-label">Member Since</span>
+                <span>Oct 2022</span>
+              </li>
+              <li class="status-item">
+                <span class="status-label">Last Login</span>
+                <span>Today, 09:41 AM</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 2rem;">
+          <div class="card">
+            <div class="card-header">
+              <h3>Personal Information</h3>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">Update your basic profile details.</p>
+            </div>
+            <form>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">First Name</label>
+                  <input type="text" class="form-control" value="Jane">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Last Name</label>
+                  <input type="text" class="form-control" value="Doe">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-control" value="jane.doe@elitespinny.com" readonly>
+                <p style="font-size: 0.7rem; color: var(--text-muted); margin-top: 0.5rem;">Email address cannot be changed. Contact IT support for assistance.</p>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Job Role</label>
+                <input type="text" class="form-control" value="System Administrator">
+              </div>
+              <div class="card-footer">
+                <button type="button" class="btn btn-primary">SAVE CHANGES</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>Security Settings</h3>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem;">Manage your password and authentication methods.</p>
+            </div>
+            <form>
+              <div class="form-group">
+                <label class="form-label">Current Password</label>
+                <input type="password" class="form-control" value="........">
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">New Password</label>
+                  <input type="password" class="form-control" value="........">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Confirm New Password</label>
+                  <input type="password" class="form-control" value="........">
+                </div>
+              </div>
+              
+              <div class="tfa-section">
+                <div class="tfa-text">
+                  <h4>Two-Factor Authentication</h4>
+                  <p>Add an extra layer of security to your account.</p>
+                </div>
+                <button type="button" class="btn btn-secondary">ENABLE 2FA</button>
+              </div>
+
+              <div class="card-footer" style="margin-top: 1rem;">
+                <button type="button" class="btn btn-primary">UPDATE SECURITY</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

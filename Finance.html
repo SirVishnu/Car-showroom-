@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance - Elite Spinny</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --background: #fff8f4;
+            --cream: #ffdbbb;
+            --light: #fff1e5;
+            --primary: #4d331b;
+            --primary-container: #664930;
+            --text: #221a12;
+            --text-light: #4f453d;
+            --border: #d3c4b9;
+            --white: #ffffff;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text);
+            font-family: "Manrope", sans-serif;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        header {
+            width: 100%;
+            height: 80px;
+            border-bottom: 1px solid rgba(211, 196, 185, 0.35);
+            background: var(--background);
+        }
+
+        .nav {
+            max-width: 1440px;
+            height: 100%;
+            margin: auto;
+            padding: 0 5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: "Libre Caslon Text", serif;
+            font-size: 24px;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-light);
+        }
+
+        .nav-links a:hover,
+        .nav-links .active {
+            color: var(--primary);
+        }
+
+        .nav-links .active {
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 5px;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .search {
+            font-size: 20px;
+            color: var(--text-light);
+        }
+
+        .sign-in {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--primary);
+        }
+
+        /* HERO */
+
+        .hero {
+            max-width: 1440px;
+            margin: auto;
+            padding: 96px 5rem 128px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 5fr 7fr;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .hero-content {
+            padding-right: 30px;
+        }
+
+        .hero h1 {
+            font-family: "Libre Caslon Text", serif;
+            font-size: 48px;
+            line-height: 1.17;
+            font-weight: 400;
+            color: var(--primary);
+            margin-bottom: 32px;
+        }
+
+        .hero p {
+            max-width: 500px;
+            font-size: 16px;
+            line-height: 1.75;
+            color: var(--text-light);
+            margin-bottom: 32px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-container);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            font-family: "Manrope", sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #4a341d;
+        }
+
+        .hero-image {
+            height: 500px;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(61, 43, 29, 0.08);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .calculator-section {
+            width: 100%;
+            background: var(--light);
+            padding: 110px 5rem;
+        }
+
+        .calculator-container {
+            max-width: 1440px;
+            margin: auto;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-heading h2 {
+            font-family: "Libre Caslon Text", serif;
+            font-size: 32px;
+            font-weight: 400;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .section-heading p {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .calculator {
+            background: var(--white);
+            border: 1px solid rgba(211, 196, 185, 0.35);
+            border-radius: 5px;
+            padding: 48px;
+            display: grid;
+            grid-template-columns: 7fr 5fr;
+            gap: 48px;
+            box-shadow: 0 10px 40px rgba(61, 43, 29, 0.05);
+        }
+
+        .controls {
+            padding-right: 48px;
+            border-right: 1px solid rgba(211, 196, 185, 0.4);
+        }
+
+        .control {
+            margin-bottom: 34px;
+        }
+
+        .control:last-child {
+            margin-bottom: 0;
+        }
+
+        .control-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .control-header label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+
+        .value {
+            font-family: "Libre Caslon Text", serif;
+            font-size: 17px;
+            color: var(--primary);
+        }
+
+        /* STATIC RANGE */
+
+        .range {
+            width: 100%;
+            height: 4px;
+            background: var(--border);
+            position: relative;
+            margin: 10px 0;
+        }
+
+        .range-line {
+            height: 4px;
+            background: var(--border);
+            width: 100%;
+        }
+
+        .range-dot {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--primary-container);
+            border-radius: 50%;
+            top: -3px;
+        }
+
+        .price-dot {
+            left: 18%;
+        }
+
+        .down-dot {
+            left: 20%;
+        }
+
+        .term-dot {
+            left: 70%;
+        }
+
+        .range-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 6px;
+            font-size: 11px;
+            color: var(--text-light);
+        }
+
+      
+
+        .result {
+            display: flex;
+            align-items: center;
+        }
+
+        .result-card {
+            width: 100%;
+            background: var(--cream);
+            padding: 30px;
+        }
+
+        .result-title {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: #3d2b1d;
+            margin-bottom: 4px;
+        }
+
+        .monthly {
+            font-family: "Libre Caslon Text", serif;
+            font-size: 42px;
+            line-height: 1.2;
+            color: var(--primary);
+        }
+
+        .apr {
+            font-size: 11px;
+            color: #725a45;
+            margin-top: 8px;
+        }
+
+        .divider {
+            height: 1px;
+            background: rgba(129, 117, 108, 0.35);
+            margin: 25px 0;
+        }
+
+        .financed {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .financed span:first-child {
+            font-family: "Libre Caslon Text", serif;
+            font-size: 16px;
+            color: #3d2b1d;
+        }
+
+        .financed span:last-child {
+            font-family: "Libre Caslon Text", serif;
+            font-size: 17px;
+            color: var(--primary);
+        }
+
+        .prequalify {
+            width: 100%;
+            background: transparent;
+            border: 1px solid var(--primary-container);
+            color: var(--primary-container);
+            padding: 13px;
+            margin-top: 25px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .prequalify:hover {
+            background: var(--primary-container);
+            color: white;
+        }
+
+        /* BENEFITS */
+
+        .benefits {
+            max-width: 1440px;
+            margin: auto;
+            padding: 110px 5rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .benefit-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--cream);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-container);
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .benefit h3 {
+            font-family: "Libre Caslon Text", serif;
+            font-size: 22px;
+            font-weight: 400;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .benefit p {
+            font-size: 12px;
+            line-height: 1.7;
+            color: var(--text-light);
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: var(--light);
+            border-top: 1px solid rgba(211, 196, 185, 0.2);
+        }
+
+        .footer-inner {
+            max-width: 1440px;
+            margin: auto;
+            padding: 32px 5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-brand strong {
+            font-family: "Libre Caslon Text", serif;
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .footer-brand span {
+            font-size: 11px;
+            color: var(--text-light);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .footer-links a {
+            font-size: 11px;
+            color: var(--text-light);
+        }
+
+     
+
+        @media (max-width: 900px) {
+
+            header {
+                display: none;
+            }
+
+            .hero {
+                padding: 50px 30px 70px;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content {
+                padding-right: 0;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+                line-height: 1.25;
+            }
+
+            .hero p {
+                font-size: 14px;
+                line-height: 1.7;
+            }
+
+            .hero-image {
+                height: 325px;
+            }
+
+            .calculator-section {
+                padding: 70px 30px;
+            }
+
+            .section-heading {
+                margin-bottom: 40px;
+            }
+
+            .section-heading h2 {
+                font-size: 27px;
+            }
+
+            .calculator {
+                grid-template-columns: 1fr;
+                padding: 28px;
+                gap: 35px;
+            }
+
+            .controls {
+                padding-right: 0;
+                border-right: none;
+            }
+
+            .result {
+                margin-top: 0;
+            }
+
+            .result-card {
+                padding: 25px;
+            }
+
+            .monthly {
+                font-size: 38px;
+            }
+
+            .benefits {
+                padding: 70px 30px;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+
+            .footer-inner {
+                padding: 30px;
+                flex-direction: column;
+                gap: 25px;
+                text-align: center;
+            }
+
+            .footer-brand {
+                align-items: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 18px;
+            }
+        }
+
+        @media (min-width: 901px) {
+            .mobile-only {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="nav">
+            <a href="#" class="logo">Elite Spinny</a>
+
+            <nav class="nav-links">
+                <a href="#">Browse Cars</a>
+                <a href="#">Sell</a>
+                <a href="#" class="active">Finance</a>
+                <a href="#">About</a>
+            </nav>
+
+            <div class="nav-actions">
+                <span class="search">⌕</span>
+                <a href="#" class="sign-in">Sign In</a>
+            </div>
+        </div>
+    </header>
+
+
+    <main>
+
+
+        <section class="hero">
+            <div class="hero-grid">
+
+                <div class="hero-content">
+                    <h1>
+                        Bespoke financing, tailored to your aspirations.
+                    </h1>
+
+                    <p>
+                        Experience a seamless, white-glove financial journey.
+                        We offer transparent, competitive rates designed
+                        exclusively for our curated collection of luxury vehicles.
+                    </p>
+
+                    <a href="#" class="btn">Apply Now</a>
+                </div>
+
+                <div class="hero-image">
+                    <img
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCL2cUfR_to5dUytGIhyfkzaj-Sc77SLEcDzkkV6KkWTD-bBJSxFiZkbROZ3IbLztO6EX7iXOmw2kscpD6SRL_o276-Fl_paF_80m7sajqZPe_EKm23_8c2NgxYiZiUpUx5QWqYghxBml9N2vS6Tl-OrXrsBuJxNpPw6T5aaazffa7nCj4CzSZl9jPEZj99O4UH4AhDJx2Oqjry7O4c_oL_z3YcI4WXipN3bMZWIH9cCGjYp_WPvJazg"
+                        alt="Luxury car interior">
+                </div>
+
+            </div>
+        </section>
+
+
+
+        <section class="calculator-section">
+
+            <div class="calculator-container">
+
+                <div class="section-heading">
+                    <h2>Financing Calculator</h2>
+                    <p>Estimate your monthly commitment with our transparent tool.</p>
+                </div>
+
+                <div class="calculator">
+
+                    <div class="controls">
+
+              
+
+                        <div class="control">
+                            <div class="control-header">
+                                <label>Vehicle Price</label>
+                                <span class="value">$125,000</span>
+                            </div>
+
+                            <div class="range">
+                                <div class="range-line"></div>
+                                <div class="range-dot price-dot"></div>
+                            </div>
+                        </div>
+
+
+                        
+
+                        <div class="control">
+                            <div class="control-header">
+                                <label>Down Payment</label>
+                                <span class="value">$25,000</span>
+                            </div>
+
+                            <div class="range">
+                                <div class="range-line"></div>
+                                <div class="range-dot down-dot"></div>
+                            </div>
+
+                            <div class="range-labels">
+                                <span>0%</span>
+                                <span>20%</span>
+                            </div>
+                        </div>
+
+
+                   
+
+                        <div class="control">
+                            <div class="control-header">
+                                <label>Loan Term</label>
+                                <span class="value">60 Months</span>
+                            </div>
+
+                            <div class="range">
+                                <div class="range-line"></div>
+                                <div class="range-dot term-dot"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    
+
+                    <div class="result">
+
+                        <div class="result-card">
+
+                            <div class="result-title">
+                                Estimated Monthly Payment
+                            </div>
+
+                            <div class="monthly">
+                                $1,864
+                            </div>
+
+                            <div class="apr">
+                                *Based on an estimated 4.5% APR.
+                            </div>
+
+                            <div class="divider"></div>
+
+                            <div class="financed">
+                                <span>Amount Financed</span>
+                                <span>$100,000</span>
+                            </div>
+
+                            <button class="prequalify">
+                                Pre-Qualify Now
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="benefits">
+
+            <div class="benefits-grid">
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">%</div>
+
+                    <h3>Bespoke Rates</h3>
+
+                    <p>
+                        We leverage our network of premier financial institutions
+                        to secure highly competitive, personalized interest rates
+                        that reflect your financial standing.
+                    </p>
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">ϟ</div>
+
+                    <h3>Swift Approval</h3>
+
+                    <p>
+                        Time is luxury. Our streamlined, digital-first application
+                        process ensures rapid decisions, minimizing paperwork and
+                        maximizing your convenience.
+                    </p>
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">☷</div>
+
+                    <h3>Flexible Terms</h3>
+
+                    <p>
+                        Structure your financing to suit your portfolio. Choose
+                        from a variety of terms and down payment options designed
+                        for ultimate flexibility.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <div class="footer-inner">
+
+            <div class="footer-brand">
+                <strong>Elite Spinny</strong>
+                <span>© 2024 Elite Spinny. All rights reserved.</span>
+            </div>
+
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Careers</a>
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
